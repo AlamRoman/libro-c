@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdbool.h>
 
+//funzione per controllare se ci sono numeri nella stringa
 int numcheck(char string[], int lenght){
     int i,j,counter=0;
 
@@ -26,6 +27,7 @@ int numcheck(char string[], int lenght){
     return counter;
 }
 
+//funzione per controllare se ci sono lettere minuscole nella stringa
 int lettercheck(char string[], int lenght){
     int i,j,counter=0;
 
@@ -50,6 +52,7 @@ int lettercheck(char string[], int lenght){
     return counter;
 }
 
+//funzione per controllare se ci sono lettere maiuscole nella stringa
 int capital_lettercheck(char string[], int lenght){
     int i,j,counter=0;
 
@@ -75,6 +78,7 @@ int capital_lettercheck(char string[], int lenght){
     return counter;
 }
 
+//funzione per controllare se ci sono simboli nella stringa
 int symbolcheck(char string[], int lenght){
     int i,j,counter=0;
 
@@ -116,15 +120,20 @@ int main(){
     char password[100];
     bool shortpassword;
 
+    //chiede di inserire la password
     printf("Inserisci la tua password: ");
+    //salva la password nella stringa
     scanf("%s",password);
+    //trova la lunghezza della stringa
     lenght=strlen(password);
 
+    //controlla se la password è troppo corta
     if (lenght<8)
     {
         shortpassword=true;
     }
     
+    //controlla la stringa e determina i valori dei contatori
     num_counter=numcheck(password,lenght);
     letter_counter=lettercheck(password,lenght);
     cap_letter_counter=capital_lettercheck(password,lenght);
@@ -149,7 +158,7 @@ int main(){
     if(symbol_counter==0){
         printf("Il tuo password deve contenere almeno un simbolo tra questi ( !\"#$&'()*+,-.=:;</>?@ ).\n"); 
     }
-    if(shortpassword==false && num_counter==1 && letter_counter==1 && cap_letter_counter==1 && symbol_counter==1)
+    if(shortpassword==false && num_counter>0 && letter_counter>0 && cap_letter_counter>0 && symbol_counter>0)
     {
         printf("Il tuo password e' buono\n");
     }
